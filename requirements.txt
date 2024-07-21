@@ -99,7 +99,6 @@ rfc3986==2.0.0
 rich==12.4.4
 ruamel.yaml==0.17.21
 ruamel.yaml.clib==0.2.6
-rulekit @ git+https://ghe.eng.fireeye.com/Helix-Detection/rulekit@129e35667ac56ce3e6d9bf70da7bc6de800b8477
 schedule==1.1.0
 SecretStorage==3.3.1
 semver==3.0.0.dev3

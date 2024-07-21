@@ -19,8 +19,7 @@ write_yaml_data(yaml_file,existing_data)
 path = f"{existing_data['TAP_path']}/rules/extended"
 dir_list = os.listdir(path)
 print(f"Fetching data from '{path}'...")
-# prints all files
-# print(dir_list)
+print("\nYou're all set!")
 
 json_data = {}
 

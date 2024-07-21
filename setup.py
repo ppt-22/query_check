@@ -9,7 +9,7 @@ dirname = os.path.dirname(__file__)
 q_1 = input("This your first time? [y/n] ")
 
 if q_1=='y':
-    print("Welcome! Creating a config.yaml and rule_data.json file for you!")
+    print("\nWelcome! Creating a config.yaml and rule_data.json file for you!\n")
     with open('config.yaml','w') as fp:
         pass
     with open('rule_data.json','w') as fp:

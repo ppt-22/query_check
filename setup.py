@@ -44,6 +44,9 @@ print("Setting alias for you...")
 command = f"""echo "alias find='python {main_file}'" >> ~/.bashrc"""
 process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 process.wait()
+command = "source ~/.bashrc"
+process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+process.wait()
 
 print("\nYou're all set!\n")
 

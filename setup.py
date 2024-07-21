@@ -25,11 +25,11 @@ timestamp = f"{current_time.year} {current_time.month} {current_time.day} {curre
 
 yaml_file = os.path.join(dirname, 'config.yaml')
 
-data_to_append = {
+config_data = {
     'TAP_path' : tap_path,
     'timestamp' : timestamp
 }
-write_yaml_data(yaml_file, data_to_append)
+write_yaml_data(yaml_file, config_data)
 
 #now getting all the data required from TAP
 import get_data

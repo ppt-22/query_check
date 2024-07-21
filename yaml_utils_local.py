@@ -8,7 +8,7 @@ def get_yaml_data(file_path):
         else:
             return
 
-def write_yaml_data(file_path, data_to_append):
+def write_yaml_data(file_path, data):
     with open(file_path,'w') as file:
-        new_data = data_to_append
+        new_data = data
         yaml.dump(new_data,file,sort_keys=False)

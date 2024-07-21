@@ -36,19 +36,19 @@ import get_data
 get_data
 
 print("Installing dependencies...")
-command = f"""'{main_file}'" >> ~/.bashrc"""
-process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+command_r = f"pip install {req_file}"
+process = subprocess.Popen(command_r, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 process.wait()
 
 print("Setting alias for you...")
-command_r = f"pip install {req_file}"
-process = subprocess.Popen(command_r, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+command = f"""echo "alias find='python {main_file}'" >> ~/.bashrc"""
+process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 process.wait()
 
 print("\nYou're all set!\n")
 
 print("\nHow to use:")
-print("-> The calling command is 'val'. Example: 'val -s msiexec'")
+print("-> The calling command is 'find'. Example: 'find -s msiexec'")
 print("-> use -s or --strict for Strict search. The keywords after the flag will be checked strictly. This flag is mandatory")
 print("-> use -l or --lenient flag for lenient search")
 print("-> use -l or --lenient for Lenient search. The keywords after the flag will be not be checked strictly")

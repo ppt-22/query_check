@@ -92,10 +92,6 @@ def main(args):
 	print("searched keywords: ",strict_check + lenient_check)
 	print(f"{len(sample_data)-1} results")
 	print("\ntips:")
-	print("-> use -l or --lenient flag for lenient search")
-	print("-> use -s or --strict for Strict search. The keywords after the flag will be checked strictly")
-	print("-> use -l or --lenient for Lenient search. The keywords after the flag will be not be checked strictly")
-	print("-> use -a or --all to exclude results with only strict check keywords")
 	print("-> use -h or --help for help")
 
 
@@ -104,7 +100,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-v", "--verbose", action="store_true", default=False, help="Verbose output"
     )
-    parser.add_argument('-s', '--strict', nargs="*", required=True, help="Strict search. The keywords after the flag will be checked strictly")
+    parser.add_argument('-s', '--strict', nargs="*", required=True, help="Strict search. The keywords after the flag will be checked strictly. This flag is mandatory")
     parser.add_argument('-l', '--lenient', nargs="*", required=False, help="Lenient search. The keywords after the flag will be not be checked strictly")
     parser.add_argument('-a', '--all',  action="store_true", required=False, help="Exclude results with only strict check keywords")
     args = parser.parse_args()

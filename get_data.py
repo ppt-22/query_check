@@ -39,7 +39,7 @@ f.close()
 
 print("Setting alias for you...")
 command = f"""echo "alias val='{main_file}'" >> ~/.bashrc"""
-process = subprocess.Popen(, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 process.wait()
 
 print("\nYou're all set!\n")

@@ -96,7 +96,12 @@ def main(args):
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="ACE rules Formatter")
+    parser = argparse.ArgumentParser(description=
+		"""
+		Query finder.
+		-> The calling command is 'find'. Example: 'find -s msiexec'
+		"""
+	)
     parser.add_argument(
         "-v", "--verbose", action="store_true", default=False, help="Verbose output"
     )

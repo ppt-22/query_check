@@ -71,13 +71,16 @@ if q_1=='y':
 
 print("\nYou're all set!\n")
 
-print("\nHow to use:")
-if q_2.lower()=='y':
-    print("-> The calling command is 'find'. Example: 'find -s msiexec'")
-if q_2.lower()=='n':
-    print(f"-> The calling command is {main_file}. Example: '{main_file} -s msiexec'")
-print("-> use -s or --strict for Strict search. The keywords after the flag will be checked strictly. This flag is mandatory")
-print("-> use -l or --lenient flag for lenient search")
-print("-> use -l or --lenient for Lenient search. The keywords after the flag will be not be checked strictly")
-print("-> use -a or --all to exclude results with only strict check keywords")
-print("-> use -h or --help for help")
+if q_1='y':
+    print("\nHow to use:")
+    if q_2.lower()=='y':
+        print("-> The calling command is 'find'. Example: 'find -s msiexec'")
+    if q_2.lower()=='n':
+        print(f"-> The calling command is {main_file}. Example: '{main_file} -s msiexec'")
+    print("-> use -s or --strict for Strict search. The keywords after the flag will be checked strictly. This flag is mandatory")
+    print("-> use -l or --lenient for Lenient search. The keywords after the flag will be not be checked strictly")
+    print("-> use -a or --all to exclude results with only strict check keywords")
+    print("-> use -h or --help for help")
+else:
+    print("\nTips:")
+    print("-> use -h or --help for help")

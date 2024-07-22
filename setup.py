@@ -71,7 +71,7 @@ if q_1=='y':
 
 print("\nYou're all set!\n")
 
-if q_1='y':
+if q_1=='y':
     print("\nHow to use:")
     if q_2.lower()=='y':
         print("-> The calling command is 'find'. Example: 'find -s msiexec'")

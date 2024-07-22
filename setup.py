@@ -43,29 +43,30 @@ write_yaml_data(yaml_file, config_data)
 import get_data
 get_data
 
-print("Installing dependencies...")
-command_r = f"pip install {req_file}"
-process = subprocess.Popen(command_r, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-process.wait()
+if q_1=='y':
+    print("Installing dependencies...")
+    command_r = f"pip install {req_file}"
+    process = subprocess.Popen(command_r, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    process.wait()
 
-q_2 = 'p'
+    q_2 = 'p'
 
-while True:
-    q_2 = input("The next step would be setting an alias by writing it to .bashrc file and sourcing it. Do you wish to proceed? [y/n] ")
-    if q_2.lower()=='y':
-        print("Setting alias for you...")
-        command = f"""echo "alias find='python {main_file}'" >> ~/.bashrc"""
-        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        process.wait()
-        command = "source ~/.bashrc"
-        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        process.wait()
-        break
-    elif q_2.lower()=='n':
-        print(f"{main_file} is the path to the main file. Run this file to use this tool.")
-        break
-    else:
-        print("wrong choice. You must pick from 'y' or 'n'")
+    while True:
+        q_2 = input("The next step would be setting an alias by writing it to .bashrc file and sourcing it. Do you wish to proceed? [y/n] ")
+        if q_2.lower()=='y':
+            print("Setting alias for you...")
+            command = f"""echo "alias find='python {main_file}'" >> ~/.bashrc"""
+            process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            process.wait()
+            command = "source ~/.bashrc"
+            process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            process.wait()
+            break
+        elif q_2.lower()=='n':
+            print(f"{main_file} is the path to the main file. Run this file to use this tool.")
+            break
+        else:
+            print("wrong choice. You must pick from 'y' or 'n'")
 
 
 print("\nYou're all set!\n")

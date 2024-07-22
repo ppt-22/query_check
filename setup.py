@@ -11,7 +11,7 @@ req_file = os.path.join(dirname, 'requirements.txt')
 
 q_1 = 'p'
 
-while q_1.lower()!='y' or q_1.lower()!='n':
+while True:
     q_1 = input("This your first time? [y/n] ")
     if q_1.lower()=='y':
         print("\nWelcome! Creating a config.yaml and rule_data.json file for you!\n")
@@ -19,8 +19,10 @@ while q_1.lower()!='y' or q_1.lower()!='n':
             pass
         with open('rule_data.json','w') as fp:
             pass
+        break
     elif q_1.lower()=='n':
         print("Alright, then I'm assuming you already have config.yaml and rule_data.json setup already")
+        break
     else:
         print("wrong choice. You must pick from 'y' or 'n'")
 
@@ -48,7 +50,7 @@ process.wait()
 
 q_2 = 'p'
 
-while q_2.lower()!='y' or q_2.lower()!='n':
+while True:
     q_2 = input("The next step would be setting an alias by writing it to .bashrc file and sourcing it. Do you wish to proceed? [y/n] ")
     if q_2.lower()=='y':
         print("Setting alias for you...")
@@ -58,8 +60,10 @@ while q_2.lower()!='y' or q_2.lower()!='n':
         command = "source ~/.bashrc"
         process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         process.wait()
+        break
     elif q_2.lower()=='n':
         print(f"{main_file} is the path to the main file. Run this file to use this tool.")
+        break
     else:
         print("wrong choice. You must pick from 'y' or 'n'")
 

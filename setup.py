@@ -9,14 +9,20 @@ dirname = os.path.dirname(__file__)
 main_file = os.path.join(dirname, 'main.py')
 req_file = os.path.join(dirname, 'requirements.txt')
 
-q_1 = input("This your first time? [y/n] ")
+q_1 = 'p'
 
-if q_1=='y':
-    print("\nWelcome! Creating a config.yaml and rule_data.json file for you!\n")
-    with open('config.yaml','w') as fp:
-        pass
-    with open('rule_data.json','w') as fp:
-        pass
+while q_1.lower()!='y' or q_1.lower()!='n':
+    q_1 = input("This your first time? [y/n] ")
+    if q_1.lower()=='y':
+        print("\nWelcome! Creating a config.yaml and rule_data.json file for you!\n")
+        with open('config.yaml','w') as fp:
+            pass
+        with open('rule_data.json','w') as fp:
+            pass
+    elif q_1.lower()=='n':
+        print("Alright, then I'm assuming you already have config.yaml and rule_data.json setup already")
+    else:
+        print("wrong choice. You must pick from 'y' or 'n'")
 
 tap_path = input("Enter path to your TAP_Detection repository:    ")
 
@@ -40,18 +46,31 @@ command_r = f"pip install {req_file}"
 process = subprocess.Popen(command_r, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 process.wait()
 
-print("Setting alias for you...")
-command = f"""echo "alias find='python {main_file}'" >> ~/.bashrc"""
-process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-process.wait()
-command = "source ~/.bashrc"
-process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-process.wait()
+q_2 = 'p'
+
+while q_2.lower()!='y' or q_2.lower()!='n'
+    q_2 = input("The next step would be setting an alias by writing it to .bashrc file and sourcing it. Do you wish to proceed? [y/n] ")
+    if q_2.lower()=='y':
+        print("Setting alias for you...")
+        command = f"""echo "alias find='python {main_file}'" >> ~/.bashrc"""
+        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        process.wait()
+        command = "source ~/.bashrc"
+        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        process.wait()
+    elif q_2.lower()=='n':
+        print(f"{main_file} is the path to the main file. Run this file to use this tool.")
+    else:
+        print("wrong choice. You must pick from 'y' or 'n'")
+
 
 print("\nYou're all set!\n")
 
 print("\nHow to use:")
-print("-> The calling command is 'find'. Example: 'find -s msiexec'")
+if q_2.lower()=='y':
+    print("-> The calling command is 'find'. Example: 'find -s msiexec'")
+if q_2.lower()=='n':
+    print(f"-> The calling command is {main_file}. Example: '{main_file} -s msiexec'")
 print("-> use -s or --strict for Strict search. The keywords after the flag will be checked strictly. This flag is mandatory")
 print("-> use -l or --lenient flag for lenient search")
 print("-> use -l or --lenient for Lenient search. The keywords after the flag will be not be checked strictly")

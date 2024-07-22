@@ -99,13 +99,13 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=
 		"""
 		Query finder.
-		-> The calling command is 'find'. Example: 'find -s msiexec'
+		\nThe calling command is 'find'. Example: 'find -s msiexec'
 		"""
 	)
     parser.add_argument(
         "-v", "--verbose", action="store_true", default=False, help="Verbose output"
     )
-    parser.add_argument('-s', '--strict', nargs="*", required=True, help="Strict search. The keywords after the flag will be checked strictly. This flag is mandatory")
+    parser.add_argument('-s', '--strict', nargs="*", required=False, help="Strict search. The keywords after the flag will be checked strictly. This flag is mandatory")
     parser.add_argument('-l', '--lenient', nargs="*", required=False, help="Lenient search. The keywords after the flag will be not be checked strictly")
     parser.add_argument('-a', '--all',  action="store_true", required=False, help="Exclude results with only strict check keywords")
     args = parser.parse_args()

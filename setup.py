@@ -48,7 +48,7 @@ process.wait()
 
 q_2 = 'p'
 
-while q_2.lower()!='y' or q_2.lower()!='n'
+while q_2.lower()!='y' or q_2.lower()!='n':
     q_2 = input("The next step would be setting an alias by writing it to .bashrc file and sourcing it. Do you wish to proceed? [y/n] ")
     if q_2.lower()=='y':
         print("Setting alias for you...")

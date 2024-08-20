@@ -117,6 +117,7 @@ def main(args):
 
 	def get_inter(list1,list2,list3):
 		concat = [list1,list2,list3]
+		t = []
 		if len(list1)!=0:
 			t = list1[:]
 			concat.remove(list1)

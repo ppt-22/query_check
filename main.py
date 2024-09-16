@@ -12,6 +12,18 @@ import yaml
 from pprint import pprint 
 
 def main(args):
+
+	dirname = os.path.dirname(__file__)
+	yaml_file = os.path.join(dirname, 'config.yaml')
+	with open(yaml_file,'r') as file:
+		existing_data = yaml.load(file, Loader=yaml.FullLoader)
+	
+	if args.macros:
+		macros_path = os.path.join(existing_data["TAP_path"],"rules/extended/macros/macros.yaml")
+		with open(macros_path,'r') as file:
+			macros_data = yaml.safe_load(file,)
+		pprint(macros_data[args.macros[0]])
+		exit(0)
 	
 	strict_check = []
 	lenient_check = []
@@ -26,10 +38,8 @@ def main(args):
 	if args.strict:
 		strict_check = args.strict
 
-	dirname = os.path.dirname(__file__)
 	
 	#yaml file with all the data
-	yaml_file = os.path.join(dirname, 'config.yaml')
 	
 	#json file with rule data 
 	json_file = os.path.join(dirname, 'rule_data.json')
@@ -40,8 +50,6 @@ def main(args):
 	current_time = datetime.now()
 	b = datetime(current_time.year, current_time.month, current_time.day, current_time.hour, current_time.minute, current_time.second)
 
-	with open(yaml_file,'r') as file:
-		existing_data = yaml.load(file, Loader=yaml.FullLoader)
 	last_check = existing_data['timestamp'].split(" ")
 	a = datetime(int(last_check[0]), int(last_check[1]), int(last_check[2]), int(last_check[3]), int(last_check[4]), int(last_check[5]))
 
@@ -172,5 +180,7 @@ if __name__ == "__main__":
     parser.add_argument('-l', '--lenient', nargs="*", required=False, help="Lenient search. The keywords after the flag will be not be checked strictly")
     parser.add_argument('-re', '--regex',  nargs="*", required=False, help="Search using regular expression")
     parser.add_argument('-a', '--all',  action="store_true", required=False, help="Exclude results with only strict check keywords")
+    parser.add_argument('-m', '--macros',  nargs="*", required=False, help="For macros")
+	# parser.add_argument("option", help="Represents the function you want to perform. Values: edit, fmt, show, validate, update, list", nargs="?")
     args = parser.parse_args()
     main(args)

@@ -17,16 +17,16 @@ existing_data['timestamp'] = f"{current_time.year} {current_time.month} {current
 write_yaml_data(yaml_file,existing_data)
 
 # Get the list of all files and directories
-path = f"{existing_data['TAP_path']}/rules/extended"
+path = f"{existing_data['TAP_path']}/rules/production"
 dir_list = os.listdir(path)
 print(f"Fetching data from '{path}'...")
 
 json_data = {}
 
 for i in dir_list:
-    if '.yaml' in i:
+    if '.json' in i:
         with open(f'{path}/{i}', 'r') as f:
-            data = yaml.load(f, Loader=yaml.SafeLoader)
+            data = json.load(f)
             json_data[data.get('id')] = data.get('search')
 
 out_file = open(json_file, "w")

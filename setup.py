@@ -69,7 +69,7 @@ if q_1=='y':
             print("wrong choice. You must pick from 'y' or 'n'")
 
 
-print("\nYou're all set!\n")
+print("\nconfig.yaml: I'M ALIVE! I'M ALIVEEEE!\n")
 
 if q_1=='y':
     print("\nHow to use:")

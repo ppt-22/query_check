@@ -34,4 +34,4 @@ out_file = open(json_file, "w")
 json.dump(json_data, out_file, indent = 4)
 
 out_file.close()
-f.close()
+# f.close()

@@ -11,6 +11,15 @@ req_file = os.path.join(dirname, 'requirements.txt')
 
 q_1 = 'p'
 
+def source_bashrc():
+    if os.environ.get("SHELL") == "/bin/bash":
+        subprocess.run(["bash", "source ~/.bashrc"], shell=True, check=True)
+        print()
+    elif os.environ.get("SHELL") == "/bin/zsh":
+        subprocess.run(["zsh","source ~/.bashrc"], shell=True, check=True)
+    else:
+        print("Error: Unsupported shell")
+
 while True:
     q_1 = input("This your first time? [y/n] ")
     if q_1.lower()=='y':
@@ -43,11 +52,33 @@ write_yaml_data(yaml_file, config_data)
 import get_data
 get_data
 
+r = subprocess.run(["which","python"])
+if r.returncode==0:
+    python_v = "python"
+else:
+    r = subprocess.run(["which","python3"])
+    if r.returncode==0:
+        python_v = "python3"
+    else:
+        print("ERROR")
+        exit(0)
+
+shell_path = os.environ.get("SHELL")
+print(shell_path)
+if shell_path:
+    if "bash" in shell_path:
+        shell = "bashrc"
+    elif "zsh" in shell_path:
+        shell = "zshrc"
+    else:
+        shell = "bashrc"
+
 if q_1=='y':
     print("Installing dependencies...")
     command_r = f"pip install {req_file}"
     process = subprocess.Popen(command_r, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     process.wait()
+    process.kill()
 
     q_2 = 'p'
 
@@ -55,12 +86,11 @@ if q_1=='y':
         q_2 = input("The next step would be setting an alias by writing it to .bashrc file and sourcing it. Do you wish to proceed? [y/n] ")
         if q_2.lower()=='y':
             print("Setting alias for you...")
-            command = f"""echo "alias find='python {main_file}'" >> ~/.bashrc"""
+            command = f"""echo "alias find='{python_v} {main_file}'" >> ~/.{shell}"""
             process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             process.wait()
-            command = "source ~/.bashrc"
-            process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-            process.wait()
+            process.kill()
+            source_bashrc()
             break
         elif q_2.lower()=='n':
             print(f"{main_file} is the path to the main file. Run this file to use this tool.")

@@ -86,7 +86,7 @@ if q_1=='y':
         q_2 = input("The next step would be setting an alias by writing it to .bashrc file and sourcing it. Do you wish to proceed? [y/n] ")
         if q_2.lower()=='y':
             print("Setting alias for you...")
-            command = f"""echo "alias find='{python_v} {main_file}'" >> ~/.{shell}"""
+            command = f"""echo "alias findquery='{python_v} {main_file}'" >> ~/.{shell}"""
             process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
             process.wait()
             process.kill()
@@ -104,7 +104,7 @@ print("\nconfig.yaml: I'M ALIVE! I'M ALIVEEEE!\n")
 if q_1=='y':
     print("\nHow to use:")
     if q_2.lower()=='y':
-        print("-> The calling command is 'find'. Example: 'find -s msiexec'")
+        print("-> The calling command is 'findquery'. Example: 'findquery -s msiexec'")
     if q_2.lower()=='n':
         print(f"-> The calling command is {main_file}. Example: '{main_file} -s msiexec'")
     print("-> use -s or --strict for Strict search. The keywords after the flag will be checked strictly. This flag is mandatory")
